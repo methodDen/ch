@@ -8,13 +8,25 @@ import java.util.Collection;
 public class Person {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name = "companyId")
+    @Column(name = "personId")
     private int id;
 
     @Column(name = "firstName")
     private String firstName;
     @Column(name = "lastName")
     private String lastName;
+
+    @Lob
+    @Column(name = "avatar", nullable = false, columnDefinition = "BLOB")
+    private byte[] image;
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
     public Person() {
     }
@@ -52,17 +64,5 @@ public class Person {
                 '}';
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Person_avatar",
-            joinColumns = @JoinColumn(name = "companyId"),
-            inverseJoinColumns = @JoinColumn(name = "avatarId"))
-    private Collection<Avatar> avatars = new ArrayList<>();
 
-    public Collection<Avatar> getAvatars() {
-        return avatars;
-    }
-
-    public void setAvatars(Collection<Avatar> avatars) {
-        this.avatars = avatars;
-    }
 }
