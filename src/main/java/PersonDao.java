@@ -6,11 +6,11 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-public class PersonDaoSecond implements DaoInterface<Person, Integer> {
+public class PersonDao implements DaoInterface<Person, Integer> {
     private Session session;
     private Transaction transaction;
 
-    public PersonDaoSecond() {
+    public PersonDao() {
     }
 
     public Session openCurrentSession() {
@@ -34,7 +34,9 @@ public class PersonDaoSecond implements DaoInterface<Person, Integer> {
     }
 
     private static SessionFactory getSessionFactory() {
-        Configuration configuration = new Configuration().configure();
+        Configuration configuration = new Configuration();
+        configuration.addAnnotatedClass(Person.class);
+        configuration.configure();
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties());
         SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());

@@ -16,17 +16,17 @@ public class Person {
     @Column(name = "lastName")
     private String lastName;
 
-    @Lob
-    @Column(name = "avatar", nullable = false, columnDefinition = "BLOB")
-    private byte[] image;
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
+////    @Lob
+////    @Column(name = "avatar", nullable = false, columnDefinition = "BLOB")
+////    private byte[] image;
+//
+//    public byte[] getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(byte[] image) {
+//        this.image = image;
+//    }
 
     public Person() {
     }
