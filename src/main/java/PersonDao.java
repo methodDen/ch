@@ -5,7 +5,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
-
+// https://examples.javacodegeeks.com/enterprise-java/hibernate/hibernate-jpa-dao-example/
 public class PersonDao implements DaoInterface<Person, Integer> {
     private Session session;
     private Transaction transaction;
@@ -83,8 +83,9 @@ public class PersonDao implements DaoInterface<Person, Integer> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Person> findAll() {
-        return (List<Person>)getSession().createQuery("from Person");
+    public List<Person>findAll() {
+        List<Person> persons = (List<Person>)getSession().createQuery("from Person").list();
+        return persons;
     }
 
     @Override

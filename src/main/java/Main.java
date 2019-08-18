@@ -14,7 +14,7 @@ public class Main {
 //        PersonDAO personDAO = new PersonDAO();
 //        Session session = PersonDAO.getSessionFactory().openSession();
         Javalin app = Javalin.create()
-                .port(7000);
+                .port(Constants.PORT);
         JavalinJackson.configure(JacksonUtils.getMapper());
         app.routes(()->{
             crud("persons/:id", new PersonController());
